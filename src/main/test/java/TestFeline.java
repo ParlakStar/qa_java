@@ -28,9 +28,13 @@ public class TestFeline {
         assertEquals("Кошачьи", feline.getFamily());
     }
 
+
     @Test
-    public void testGetKittens() {
+   public void testGetKittensDefault(){
         assertEquals(1, feline.getKittens());
+    }
+    @Test
+    public void testGetKittensWithCount() {
         assertEquals(3, feline.getKittens(3));
     }
 
@@ -38,6 +42,7 @@ public class TestFeline {
     public void testEatMeat() throws Exception {
         List<String> actual = feline.eatMeat();
         List<String> expected = Arrays.asList("Животные", "Птицы", "Рыба");
+
         assertEquals(expected, actual);
     }
 }

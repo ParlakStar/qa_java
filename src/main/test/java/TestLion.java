@@ -1,4 +1,4 @@
-import com.example.FelineMetod;
+import com.example.Feline;
 import com.example.Lion;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,33 +16,38 @@ import static org.mockito.Mockito.when;
 public class TestLion {
 
     @Mock
-    private FelineMetod felineMetod;
+    private Feline feline;
 
     @Before
     public void setUp() throws Exception {
-        when(felineMetod.getKittens()).thenReturn(2);
-        when(felineMetod.getFood("Хищник")).thenReturn(Arrays.asList("мышь", "курица"));
+        when(feline.getKittens()).thenReturn(2);
+        when(feline.getFood("Хищник")).thenReturn(Arrays.asList("мышь", "курица"));
     }
 
     @Test
-    public void testDoesHaveMane() throws Exception {
-        Lion maleLion = new Lion("Самец");
-        Lion femaleLion = new Lion("Самка");
+    public void testDoesHaveManeMale() throws Exception {
+        Lion maleLion = new Lion(feline, "Самец");
 
         assertEquals(true, maleLion.doesHaveMane());
+    }
+
+    @Test
+    public void femaleTest() throws Exception{
+        Lion femaleLion = new Lion(feline, "Самка");
         assertEquals(false, femaleLion.doesHaveMane());
     }
 
+
     @Test
-    public void testGetKittens() {
-        Lion lion = new Lion(felineMetod);
+    public void testGetKittens() throws Exception {
+        Lion lion = new Lion(feline, "Самец");
 
         assertEquals(2, lion.getKittens());
     }
 
     @Test
     public void testGetFood() throws Exception {
-        Lion lion = new Lion(felineMetod);
+        Lion lion = new Lion(feline, "Самец");
 
         List<String> expectedFood = Arrays.asList("мышь", "курица");
         List<String> actualFood = lion.getFood();
@@ -52,6 +57,6 @@ public class TestLion {
 
     @Test(expected = Exception.class)
     public void testConstructorThrowsException() throws Exception {
-        Lion lion = new Lion("InvalidSexValue");
+        Lion lion = new Lion(feline, "InvalidSexValue");
     }
 }

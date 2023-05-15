@@ -40,6 +40,7 @@ public class TestCat {
         List<String> expected = Arrays.asList("Животные", "Птицы", "Рыба");
         when(predator.eatMeat()).thenReturn(expected);
         List<String> actual = cat.getFood();
+
         assertEquals(expected, actual);
     }
 
