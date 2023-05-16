@@ -23,7 +23,6 @@ public class TestParameterizedLion {
         this.sex = sex;
         this.expectedHasMane = expectedHasMane;
     }
-
     @Parameterized.Parameters(name = "Lion has mane - {2}. Test data: sex = {1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
