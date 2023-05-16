@@ -40,7 +40,6 @@ public class TestParameterizedLion {
         assertEquals(expectedHasMane, lion.doesHaveMane());
     }
 
-
     @RunWith(MockitoJUnitRunner.class)
     public static class ExceptionTestCase {
         @Test
